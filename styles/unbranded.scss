@@ -1,10 +1,18 @@
 @import "node_modules/govuk-frontend/govuk/settings/all";
+@import "styles/sofia";
 
-// Override the default GOV.UK Frontend font stack
-$govuk-font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+// Declare the local fonts to be referenced in the mixin. Replace null values for other font types
+// Here we're just using woff and the regular type weight. gov kit adds the weight and style
+@include font-face(KlavikaRegular-TF, "/assets/fonts/KlavikaRegular-TF", null, null, woff);
+
+// Override the default GOV.UK Frontend font stack with our proto typeface, using mixin
+$govuk-font-family: "KlavikaRegular-TF", sans-serif;
 
 // Override the canvas background colour
 $govuk-canvas-background-colour: $govuk-body-background-colour;
+
+// Override the header background colours
+$govuk-header-background: govuk-colour("white");
 
 // Grab everything else
 @import "node_modules/govuk-frontend/govuk/all"
